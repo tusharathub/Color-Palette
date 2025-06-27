@@ -8,6 +8,7 @@ export default function PaletteResult({ data} : {data : string}) {
     try{
         parsedData = JSON.parse(data);
     }catch(e) {
+        console.error(e);
         return <h2>Could not parse AI response</h2>
     }
 

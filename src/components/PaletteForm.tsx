@@ -1,48 +1,38 @@
 "use client";
-
 import { useState } from "react";
 
-interface ColorPaletteFormProps{
-    onResult: (result: string) => void;
+interface ColorPaletteFormProps {
+  onResult: (result: string) => void;
 }
 
-export default function ColorPalette({ onResult }: ColorPaletteFormProps ) {
+export default function PaletteForm({ onResult }: ColorPaletteFormProps) {
   const [prompt, setPrompt] = useState("");
   const [baseColor, setBaseColor] = useState("#fd451c");
   const [colorCount, setColorCount] = useState(3);
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState<{
-    colors: string[];
-    suggestion: string;
-  } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setResult(null);
     setError(null);
 
     try {
       const res = await fetch("/api/generate-palette", {
         method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify({
-          prompt,
-          baseColor,
-          colorCount,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt, baseColor, colorCount }),
       });
 
       const data = await res.json();
 
       if (res.ok) {
-        const parsed = JSON.parse(data.result);
-        setResult(parsed);
+        onResult(data.result);  
       } else {
-        setError(data.error || "something went terribly wrong");
+        setError(data.error || "Something went wrong");
       }
     } catch (error) {
+      console.error("Palette generation error:", error);
       setError("Failed to get palette");
     } finally {
       setLoading(false);
@@ -52,14 +42,12 @@ export default function ColorPalette({ onResult }: ColorPaletteFormProps ) {
   return (
     <div className="max-w-xl mx-auto p-6 bg-white shadow-lg rounded-xl mt-10">
       <h2 className="text-2xl font-bold mb-4 text-center">
-        Color Palette Generator featuring AI
+        Color Palette Generator Featuring AI
       </h2>
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <div>
-          <label className="block font-medium mb-1">
-            Describe your desired vibe:
-          </label>
+          <label className="block font-medium mb-1">Describe your desired vibe:</label>
           <input
             type="text"
             placeholder="e.g. Calm beach sunset"
@@ -104,26 +92,11 @@ export default function ColorPalette({ onResult }: ColorPaletteFormProps ) {
         >
           {loading ? "Generating..." : "Generate Palette"}
         </button>
+
+        {error && <p className="text-red-600 mt-4">{error}</p>}
+
+        
       </form>
-
-      {error && <p className="text-red-600 mt-4"> {error} </p>}
-
-      {result && (
-        <div className="mt-6">
-          <h3 className="text-xl font-semibold mb-2">Generated Palette:</h3>
-          <div className="grid grid-cols-3 gap-2 mb-3">
-            {result.colors.map((color, index) => (
-              <div
-                key={index}
-                className="w-full h-16 rounded"
-                style={{ backgroundColor: color }}
-                title={color}
-              />
-            ))}
-          </div>
-          <p className="text-gray-700 italic">💡 {result.suggestion}</p>
-        </div>
-      )}
     </div>
   );
 }

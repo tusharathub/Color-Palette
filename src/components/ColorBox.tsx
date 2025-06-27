@@ -17,9 +17,12 @@ export default function ColorBox({color} : {color: string}) {
             <span className="absolute bottom-1 left-1 text-white text-xs bg-black/50 px-1 rounded">
                 {color}
             </span>
-            <span className="absolute top-1 right-1 text-white text-xs bg-green-500 px-1 rounded">
-                Copied!
-            </span>
+            {copied && (
+  <span className="absolute top-1 right-1 text-white text-xs bg-green-500 px-1 rounded animate-pulse">
+    Copied!
+  </span>
+)}
+
         </div>
     )
 }
