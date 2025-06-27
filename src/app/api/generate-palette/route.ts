@@ -1,14 +1,28 @@
+import openai from '@/lib/apenai';
+import { NextResponse } from 'next/server';
 
+export async function POST(request: Request) {
+  const { prompt, baseColor, colorCount } = await request.json();
 
+  try {
+    const completion = await openai.chat.completions.create({
+      model : "gpt-4o",
+      messages: [
+        {
+          role: 'system',
+          content: 'You are an expert AI in generating color palettes. Return a JSON array of HEX color codes with a small comment suggesting which color is more relevant for design, given the user\'s input.',
+        },
+        {
+          role: 'user',
+          content: `Prompt: ${prompt}. Base Color: ${baseColor}. Number of colors: ${colorCount}. Return only JSON.`,
+        },
+      ],
+    });
 
-// backend api calls, calls opanAi with user inputs
-
-// You are an expert color palette generator AI.
-// Return a JSON array of HEX color codes based on this:
-
-// Prompt: Calm Ocean Vibes
-// Base Color: #3BAFDA
-// Number of Colors: 5
-
-// Also add a small suggestion telling which color is most relevant.
-// Return JSON only.
+    const aiResponse = completion.choices[0].message.content;
+    return NextResponse.json({ result: aiResponse });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ error: 'Palette generation failed.' }, { status: 500 });
+  }
+}

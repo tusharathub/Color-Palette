@@ -46,7 +46,7 @@ export default function PaletteForm({onResult} : {onResult : (data: any) => void
             className="border p-2 rounded"
             />
             <button type="submit" className="bg-blue-500 text-white py-2 rounded hover:bg-blue-300" >
-                {loading ? "workring on it" : "Generate Palette"}
+                {loading ? "working on it" : "Generate Palette"}
             </button>
          
         </form>

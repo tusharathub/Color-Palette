@@ -1,11 +1,16 @@
+"use client"
 import PaletteForm from "@/components/PaletteForm";
-import Image from "next/image";
+import PaletteResult from "@/components/PaletteResult";
+import { useState } from "react";
 
 export default function Home() {
+  const[result, setResult] = useState("");
+
   return (
-    <div className= "mt-10 border border-b-red-700 ">
-      <h2 >hiii</h2>
-      <PaletteForm/>
-    </div>
+    <main >
+      <h1 className="text-3xl font-bold text-center mt-6"> Color Palette Generator featuring AI</h1>
+      <PaletteForm onResult={setResult}/>
+      {result && <PaletteResult data={result} />}
+    </main>
   );
 }
