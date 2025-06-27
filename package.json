@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google/genai": "^1.7.0",
+    "@google/generative-ai": "^0.24.1",
     "next": "15.3.4",
-    "openai": "^5.7.0",
+    "openai": "^5.8.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "together-ai": "^0.16.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

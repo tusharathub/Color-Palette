@@ -5,9 +5,9 @@ export default function ColorBox({color} : {color: string}) {
     const [copied, setCopied] = useState(false);
 
     const handleCopy = async () => {
-        await navigator.clipboard.writeText(color);
+        console.log("copy attemtp", color)
         setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+        setTimeout(() => setCopied(false), 1000);
     }
 
     return (
