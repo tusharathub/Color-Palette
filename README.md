@@ -1,6 +1,8 @@
 
 ## AI powered Color Paletter Selector
 
+Live : https://color-palette-flfx.vercel.app/
+
 - You give input.
 - You give number of colors you want.
 - AI will give you back your desired colors with HEX codes.
