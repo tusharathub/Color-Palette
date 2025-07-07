@@ -1,7 +1,7 @@
 
 ## AI powered Color Paletter Selector
 
-Live : https://color-palette-flfx.vercel.app/
+Check Out : https://color-palette-flfx.vercel.app/
 
 - You give input.
 - You give number of colors you want.
