@@ -13,7 +13,7 @@ export default function PaletteResult({ data} : {data : string}) {
     }
 
     return(
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-6">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-6 ">
             {parsedData.colors.map((hex: string, idx: number) => (
                 <ColorBox key={idx} color={hex} />
             ))}
