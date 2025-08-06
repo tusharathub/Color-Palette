@@ -40,7 +40,7 @@ export default function PaletteForm({ onResult }: ColorPaletteFormProps) {
   };
 
   return (
-    <div className="max-w-xl mx-auto  p-6 bg-gradient-to-br from-lime-50 to-green-100 shadow-lg rounded-xl mt-10">
+    <div className="max-w-xl mx-auto  p-6 bg-gradient-to-br from-orange-50 to-gray-50 shadow-xl rounded-xl mt-10" >
       <h2 className="text-2xl font-bold mb-4 text-center">
         Color Palette Generator Featuring AI
       </h2>
@@ -59,7 +59,7 @@ export default function PaletteForm({ onResult }: ColorPaletteFormProps) {
         </div>
 
         <div>
-          <label className="block font-medium mb-1">Select base color (optional):</label>
+          <label className="block font-medium mb-1">Select base color :</label>
           <div className="flex items-center gap-3">
             <input
               type="color"
@@ -87,7 +87,7 @@ export default function PaletteForm({ onResult }: ColorPaletteFormProps) {
           type="submit"
           disabled={loading}
           className={`w-full py-2 rounded text-black border border-black ${
-            loading ? "bg-gray-400" : "bg-green-100 hover:bg-green-200"
+            loading ? "bg-gray-400" : "bg-orange-50 hover:bg-orange-100"
           }`}
         >
           {loading ? "Generating..." : "Generate Palette"}

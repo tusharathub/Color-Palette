@@ -8,11 +8,11 @@ export default function Home() {
   const [result, setResult] = useState<string>("");
 
   return (
-    <main className="min-h-screen w-full  bg-gradient-to-br from-lime-50 to-green-100 text-gray-900 px-6 py-10 flex flex-col items-center">
+    <main className="min-h-screen w-full  bg-gradient-to-br from-gray-100 to-orange-200 text-gray-900 px-6 py-10 flex flex-col items-center">
       {/* Hero Section */}
       <section className="max-w-4xl text-center mb-16">
         <h1 className="text-5xl font-bold leading-tight mb-4">
-          🎨 AI Color Palette Generator
+          AI Color Palette Generator
         </h1>
         <p className="text-xl text-gray-900">
           No More Guessing: Instantly generate harmonious color palettes with
@@ -22,7 +22,7 @@ export default function Home() {
       </section>
 
       {/* Form Section */}
-      <section className="w-full max-w-2xl border border-gray-200 bg-gradient-to-br from-lime-50 to-green-200 shadow-xl rounded-2xl p-8 mb-12">
+      <section className="w-full max-w-2xl border border-gray-200 bg-gradient-to-br from-orange-100 to-gray-100 shadow-xl rounded-2xl p-8 mb-12">
         <PaletteForm onResult={setResult} />
       </section>
 
@@ -39,21 +39,21 @@ export default function Home() {
           Why use this AI Palette Generator?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-gradient-to-br from-lime-50 to-green-200 p-6 rounded-xl shadow-md">
+          <div className="bg-gradient-to-br from-gray-50 to-orange-200 p-6 rounded-xl shadow-md">
             <h3 className="font-bold text-xl mb-2">For Everyone</h3>
             <p className="text-gray-900">
               Designers, developers, marketers, or hobbyists – no design degree
               needed.
             </p>
           </div>
-          <div className="bg-gradient-to-br from-lime-50 to-green-200 p-6 rounded-xl shadow-md">
+          <div className="bg-gradient-to-br from-gray-50 to-orange-200 p-6 rounded-xl shadow-md">
             <h3 className="font-bold text-xl mb-2">Mood-driven output:</h3>
             <p className="text-gray-900">
               Just describe a feeling, scene, or product (“cozy winter cabin”,
               “fresh app launch”), and AI does the rest!
             </p>
           </div>
-          <div className="bg-gradient-to-br from-lime-50 to-green-200 p-6 rounded-xl shadow-md">
+          <div className="bg-gradient-to-br from-gray-50 to-orange-200 p-6 rounded-xl shadow-md">
             <h3 className="font-bold text-xl mb-2">Unique Every Time</h3>
             <p className="text-gray-900">
               No recycled color sets. Every prompt returns fresh, context-aware
@@ -67,7 +67,7 @@ export default function Home() {
           href="https://github.com/tusharathub"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-green-400 text-white font-semibold rounded-lg shadow hover:bg-green-500 transition duration-200"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-orange-100 text-black font-semibold rounded-lg shadow hover:bg-orange-300 transition duration-200"
         >
           Liked it ?
           <svg
